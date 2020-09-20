@@ -34,7 +34,7 @@ function gw2arm_shortcode($atts=[]){
 
 }
 
-// take shortcode attributes puzzle the embed html
+// take shortcode-attributes to puzzle the embed html
 function gw2arm_buildembed($atts){
   $embed = '<div';
   foreach($atts as $with => $val){
@@ -63,13 +63,12 @@ function gw2arm_buildembed($atts){
           $embed .= 'data-armory-size="20"';
         }
         break;
-      // use custom icon mcrypt_enc_get_supported_key_sizes
+      // use custom icon size
       case 'size' :
         $embed .= ' data-armory-size='.$val;
         break;
 
       default:
-        $embed .= '<p> someting went wrong with the embed </p>';
         break;
     }
   }
