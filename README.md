@@ -17,3 +17,8 @@ It adds the shortcode [gw2arm] to worpress. Supported attributes are:
 
 You have to pick fitting options just like for the original embeddings
 [gw2arm type='skills' id=5507 text=1 inline=1]
+
+# Issues
+- Multiple IDs in one code untested. Especially multi specializations won't work
+- blank text not implemented yet
+- custom inline-text not implementet yet
