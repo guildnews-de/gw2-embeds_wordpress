@@ -41,7 +41,7 @@ function gw2arm_shortcode($atts=[]){
   wp_enqueue_script( 'GW2arm-Embeds.js', plugins_url("gw2arm-embeds/gw2arm-embeds.js"),NULL,NULL,NULL);
 
   // give attributes to embed-build-function and return it
-  return wp_kses_post($embed);
+  return $embed;
 
 }
 
