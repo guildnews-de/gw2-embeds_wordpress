@@ -1,6 +1,9 @@
 # gw2arm-embeds
 
 This is a wordpress plugin to make it easier to use the [GW2 armory embeds](https://github.com/madou/armory-embeds)
+Simply download the zip an install it in Wordpress-Pugin-Manager. 
+
+Be careful! Plugin is under development! Incompatabilites could lead to a disfunctional website!
 
 # How it works
 
