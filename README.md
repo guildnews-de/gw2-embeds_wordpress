@@ -1,6 +1,6 @@
 # gw2arm-embeds
 
-This is a Wordpress plugin to make it easier to use the [GW2 armory embeds](https://github.com/madou/armory-embeds)
+This is a Wordpress plugin to make it easier to use the [GW2 armory embeds](https://github.com/madou/armory-embeds).
 Simply download the zip an install it in Wordpress-Plugin-Manager.
 
 Be careful! Plugin is under development! Incompatibility could lead to a nonfunctional website!
@@ -12,7 +12,7 @@ Supported parameters are:
 
 parameter | value | original
 ------------|------------|------------
-type  |  amulets/items/skills/spec/traits | data-armory-embed
+type  |  amulets/items/skills/spec | data-armory-embed
 id  |  amulet/item/skill/spec ID  | data-armory-ids
 traits  |  trait IDs (read multi-view instructions)  |  data-armory-\<id>-traits
 text  |  wiki / gw2spidy  |  data-armory-inline-text
