@@ -14,7 +14,7 @@ parameter | value | original
 ------------|------------|------------
 type  |  amulets/items/skills/spec/traits | data-armory-embed
 id  |  amulet/item/skill/spec ID  | data-armory-ids
-traits  |  trait IDs (read multi-view instructions)  |  data-armory-<id>-traits
+traits  |  trait IDs (read multi-view instructions)  |  data-armory-\<id>-traits
 text  |  wiki / gw2spidy  |  data-armory-inline-text
 blank  |  any text  |  data-armory-blank-text
 size  |  number  |  data-armory-size
