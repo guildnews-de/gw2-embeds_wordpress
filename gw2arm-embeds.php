@@ -11,16 +11,21 @@
 
 class GW2arm_embedBasic
 {
-    public $type;
-    public $id;
+    protected $type;
+    protected $id;
     protected $dom;
     protected $span;
 
-    public function setValues($confArray)
+    protected function basicValues($confArray)
     {
         $this->type = $confArray['type'];
+        // filter empty spaces
         $this->id = preg_replace('/\s+/', '', $confArray['id']);
-        //$this->id = $confArray['id'];
+    }
+
+    public function setValues($confArray)
+    {
+        $this->basicValues($confArray);
     }
 
     protected function createEmbed()
@@ -44,21 +49,17 @@ class GW2arm_embedBasic
 
 class GW2arm_embedDefault extends GW2arm_embedBasic
 {
-    public $text;
-    public $blank;
-    public $size;
-    public $inline;
+    protected $text;
+    protected $blank;
+    protected $size;
+    protected $inline;
 
     public function setValues($confArray)
     {
+        $this->basicValues($confArray);
+        // additional Values
         foreach ($confArray as $key => $value) {
             switch ($key) {
-        case 'type':
-          $this->type = $value;
-          break;
-        case 'id':
-          $this->id = preg_replace('/\s+/', '', $value);
-          break;
         case 'text':
           $this->text = $value;
           break;
@@ -114,36 +115,34 @@ class GW2arm_embedsSpec extends GW2arm_embedBasic
 
     public function setValues($confArray)
     {
-      foreach ($confArray as $key => $value) {
-        switch ($key) {
+        $this->basicValues($confArray);
+        // additonal Values
+        foreach ($confArray as $key => $value) {
+            switch ($key) {
           case 'type':
             $this->type = 'specializations';
             break;
-          case 'id':
-            $this->id = preg_replace('/\s+/', '', $value);
-            break;
           case 'traits':
+            // filter empty spaces
             $this->traits = preg_replace('/\s+/', '', $value);
             break;
           default:
             break;
         }
-      }
+        }
     }
 
     protected function setConfig()
     {
         if (isset($this->traits)) {
-          $this->id = explode(',',$this->id);
-          $this->traits = explode(';',$this->traits);
+            $this->id = explode(',', $this->id);
+            $this->traits = explode(';', $this->traits);
 
-          for ($i=0; $i < sizeof($this->id); $i++) {
-            $id = $this->id[$i];
-            $tr = isset($this->traits[$i]) ? $this->traits[$i] : '';
-            $this->span->setAttribute('data-armory-'.$id.'-traits', $tr);
-
-          }
-
+            for ($i=0; $i < sizeof($this->id); $i++) {
+                $id = $this->id[$i];
+                $tr = isset($this->traits[$i]) ? $this->traits[$i] : '';
+                $this->span->setAttribute('data-armory-'.$id.'-traits', $tr);
+            }
         }
     }
 
@@ -196,21 +195,27 @@ function gw2arm_shortcode($atts=[])
     // filter empty keys
     $checked_atts = array_filter($checked_atts);
 
+    if (!gw2arm_check_type($checked_atts)) {
+        $error = '<p style="display:inline; color:red;"> ~~ unexpected shortcode type <i>"'.$atts['type'].'"</i> ~~ </p>';
+        return $error;
+    }
+
     /*
      *  trigger create-embedding functions
      */
 
-    if (gw2arm_check_type($checked_atts)) {
-        if ($checked_atts['type'] != 'spec') {
-            $shortcode = new GW2arm_embedDefault();
+    if ($checked_atts['type'] != 'spec') {
+        if (sizeof($checked_atts) == 2) {
+            $shortcode = new GW2arm_embedBasic();
         } else {
-            $shortcode = new GW2arm_embedsSpec();
+            $shortcode = new GW2arm_embedDefault();
         }
-        $shortcode->setValues($checked_atts);
-        $embed = $shortcode->getEmbed();
     } else {
-        $embed = '<p style="display:inline; color:red;"> ~~ unsupported shortcode type <i>"'.$atts['type'].'"</i> ~~ </p>';
+        $shortcode = new GW2arm_embedsSpec();
     }
+    $shortcode->setValues($checked_atts);
+    $embed = $shortcode->getEmbed();
+
 
     /*
      *  Final Steps
