@@ -12,7 +12,7 @@ Supported parameters are:
 
 parameter | value | original
 ------------|------------|------------
-type  |  amulets/items/skills/spec/traits | data-armory-embed
+type  |  amulets/items/skills/spec | data-armory-embed
 id  |  amulet/item/skill/spec ID  | data-armory-ids
 traits  |  trait IDs (read multi-view instructions)  |  data-armory-<id>-traits
 text  |  wiki / gw2spidy  |  data-armory-inline-text
