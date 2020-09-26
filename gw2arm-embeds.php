@@ -10,12 +10,13 @@
  */
 
 
-include 'gw2arm-embedClasses.php';
+include 'gw2arm_class_main.php';
+include 'gw2arm_class_embeds.php';
 
 /*
  *  main function called by WP with sc attributes
  */
- 
+
 function gw2arm_shortcode($atts=[])
 {
 
