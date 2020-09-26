@@ -2,16 +2,16 @@
 /**
  * Plugin Name:       GuildWars2 Embeddings
  * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           0.6.3
+ * Version:           0.6.4
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
  * License URI:       https://opensource.org/licenses/BSD-3-Clause
  */
 
-
-include 'includes/class_gw2arm_main.php';
-include 'includes/class_gw2arm_embeds.php';
+ if ( ! defined( 'WPINC' ) ) {
+ 	die;
+ }
 
 /*
  *  main function called by WP with sc attributes
@@ -19,6 +19,9 @@ include 'includes/class_gw2arm_embeds.php';
 
 function gw2arm_shortcode($atts=[])
 {
+  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_main.php';
+  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_embeds.php';
+
   // open new instance of shortcode builder
   $shortcode = new GW2arm_shortcode();
 
@@ -30,12 +33,11 @@ function gw2arm_shortcode($atts=[])
 
   // check if scripts are added
   wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
-  wp_enqueue_script('GW2arm-Embeds.js', plugin_dir_url( __FILE__ ).'public/js/gw2arm-embeds.js', null, null, null);
+  wp_enqueue_script('GW2arm-locale.js', plugin_dir_url( __FILE__ ).'languages/js/gw2arm_locale.js', null, null, null);
 
   // return embedding back to wordpress
   return $embedding;
 }
-
 
 /**
 * Central location to create all shortcodes.
