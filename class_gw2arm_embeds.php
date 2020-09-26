@@ -1,54 +1,66 @@
 <?php
-class GW2arm_embedBasic
+class GW2arm_embed_basic
 {
-    protected $type;
-    protected $id;
-    protected $dom;
-    protected $span;
+  protected $dom;
+  protected $span;
+  protected $type;
+  protected $id;
 
-    protected function basicValues($confArray)
+    // hand over the shortcode attributes to the class
+    public function set_values($shortcode_atts)
     {
-        $this->type = $confArray['type'];
-        // filter empty spaces
-        $this->id = preg_replace('/\s+/', '', $confArray['id']);
+        $this->set_basic_values($shortcode_atts);
     }
 
-    public function setValues($confArray)
+    protected function set_basic_values($shortcode_atts)
     {
-        $this->basicValues($confArray);
+        $this->type = $shortcode_atts['type'];
+        $this->id = $shortcode_atts['id'];
     }
 
-    protected function createEmbed()
+    // create empty html-element
+    protected function create_dom()
     {
-        // create new <div>
         $this->dom = new DOMDocument();
         $this->span = $this->dom->createElement('span');
-        // set GW2armory config
+        // directly add basic (always given) attributes
         $this->span->setAttribute('data-armory-embed', $this->type);
         $this->span->setAttribute('data-armory-ids', $this->id);
     }
 
-    public function getEmbed()
+    // add additonal attributes to html-element
+    protected function append_atts(){
+      // none in basic class
+    }
+
+    // execute html-building functions and return element
+    public function create_embedding()
     {
-        $this->createEmbed();
+      if(isset($this->type)){
+        $this->create_dom();
+        $this->append_atts();
+      } else {
+        return 'type not set';
+      }
 
         $this->dom->appendChild($this->span);
         return $this->dom->saveHTML();
     }
 }
 
-class GW2arm_embedDefault extends GW2arm_embedBasic
+class GW2arm_embed_default extends GW2arm_embed_basic
 {
     protected $text;
     protected $blank;
     protected $size;
     protected $inline;
 
-    public function setValues($confArray)
+    public function set_values($shortcode_atts)
     {
-        $this->basicValues($confArray);
+        $this->set_basic_values($shortcode_atts);
+
         // additional Values
-        foreach ($confArray as $key => $value) {
+        foreach ($shortcode_atts as $key => $value) {
             switch ($key) {
         case 'text':
           $this->text = $value;
@@ -62,7 +74,7 @@ class GW2arm_embedDefault extends GW2arm_embedBasic
         case 'inline':
           if ($value = '1') {
               $this->inline = true;
-              if (!isset($confArray['size'])) {
+              if (!isset($shortcode_atts['size'])) {
                   $this->size = '20';
               }
           }
@@ -73,7 +85,7 @@ class GW2arm_embedDefault extends GW2arm_embedBasic
         }
     }
 
-    protected function setConfig()
+    protected function append_atts()
     {
         if (isset($this->text)) {
             $this->span->setAttribute('data-armory-inline-text', $this->text);
@@ -88,33 +100,24 @@ class GW2arm_embedDefault extends GW2arm_embedBasic
             $this->span->setAttribute('style', 'display: inline-block; vertical-align: bottom;');
         }
     }
-
-    public function getEmbed()
-    {
-        $this->createEmbed();
-        $this->setConfig();
-
-        $this->dom->appendChild($this->span);
-        return $this->dom->saveHTML();
-    }
 }
 
-class GW2arm_embedsSpec extends GW2arm_embedBasic
+class GW2arm_embed_spec extends GW2arm_embed_basic
 {
-    public $traits;
+    protected $traits;
 
-    public function setValues($confArray)
+    public function set_values($shortcode_atts)
     {
-        $this->basicValues($confArray);
+        $this->set_basic_values($shortcode_atts);
         // additonal Values
-        foreach ($confArray as $key => $value) {
+        foreach ($shortcode_atts as $key => $value) {
             switch ($key) {
           case 'type':
             $this->type = 'specializations';
             break;
           case 'traits':
             // filter empty spaces
-            $this->traits = preg_replace('/\s+/', '', $value);
+            $this->traits = $value;
             break;
           default:
             break;
@@ -122,26 +125,17 @@ class GW2arm_embedsSpec extends GW2arm_embedBasic
         }
     }
 
-    protected function setConfig()
+    protected function append_atts()
     {
         if (isset($this->traits)) {
-            $this->id = explode(',', $this->id);
-            $this->traits = explode(';', $this->traits);
+            $trait_ids = explode(',', $this->id);
+            $trait_values = explode(';', $this->traits);
 
             for ($i=0; $i < sizeof($this->id); $i++) {
-                $id = $this->id[$i];
-                $tr = isset($this->traits[$i]) ? $this->traits[$i] : '';
+                $id = $trait_ids[$i];
+                $tr = isset($trait_values[$i]) ? $trait_values[$i] : '';
                 $this->span->setAttribute('data-armory-'.$id.'-traits', $tr);
             }
         }
-    }
-
-    public function getEmbed()
-    {
-        $this->createEmbed();
-        $this->setConfig();
-
-        $this->dom->appendChild($this->span);
-        return $this->dom->saveHTML();
     }
 }

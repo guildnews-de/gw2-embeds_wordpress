@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       GW2arm-Embeds
  * Description:       Implements a shortcode for simplyfied use of GW2 Armory embeds
- * Version:           0.6.1
+ * Version:           0.6.2
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
@@ -10,8 +10,8 @@
  */
 
 
-include 'gw2arm_class_main.php';
-include 'gw2arm_class_embeds.php';
+include 'class_gw2arm_main.php';
+include 'class_gw2arm_embeds.php';
 
 /*
  *  main function called by WP with sc attributes
@@ -19,6 +19,13 @@ include 'gw2arm_class_embeds.php';
 
 function gw2arm_shortcode($atts=[])
 {
+  $shortcode = new GW2arm_shortcode();
+
+  $shortcode->parse_attributes($atts);
+
+  $embedding = $shortcode->get_embedding();
+
+    /*
 
     // porperly format and filter input sc attributes
 
@@ -73,6 +80,7 @@ function gw2arm_shortcode($atts=[])
 
     // give attributes to embed-build-function and return it
     return $embed;
+*/
 }
 
 // check the sc for valid type
