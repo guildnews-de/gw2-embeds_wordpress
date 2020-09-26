@@ -3,7 +3,6 @@
 class GW2arm_shortcode
 {
   private $shortcode_atts;
-  private $embedding;
   private $gw2arm_error;
 
   public function parse_attributes($input_atts){
@@ -63,7 +62,9 @@ class GW2arm_shortcode
         $builder = new GW2arm_embed_spec();
     }
     $builder->set_values($shortcode_atts);
-    $this->embedding = $builder->create_embedding();
+    $embedding_html = $builder->create_embedding();
+
+    return $embedding_html;
   }
 
   private function error($string){

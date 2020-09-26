@@ -19,11 +19,21 @@ include 'class_gw2arm_embeds.php';
 
 function gw2arm_shortcode($atts=[])
 {
+  // open new instance of shortcode builder
   $shortcode = new GW2arm_shortcode();
 
+  // give attributes-array to builder
   $shortcode->parse_attributes($atts);
 
+  // trigger embed-building functions and get final embedding html
   $embedding = $shortcode->get_embedding();
+
+  // check if scripts are added
+  wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
+  wp_enqueue_script('GW2arm-Embeds.js', plugins_url("gw2arm-embeds/gw2arm-embeds.js"), null, null, null);
+
+  // return embedding back to wordpress
+  return $embedding;
 
     /*
 

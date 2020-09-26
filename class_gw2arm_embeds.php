@@ -131,10 +131,10 @@ class GW2arm_embed_spec extends GW2arm_embed_basic
             $trait_ids = explode(',', $this->id);
             $trait_values = explode(';', $this->traits);
 
-            for ($i=0; $i < sizeof($this->id); $i++) {
-                $id = $trait_ids[$i];
-                $tr = isset($trait_values[$i]) ? $trait_values[$i] : '';
-                $this->span->setAttribute('data-armory-'.$id.'-traits', $tr);
+            for ($i=0; $i < sizeof($trait_ids); $i++) {
+                $i_id = $trait_ids[$i];
+                $i_traits = isset($trait_values[$i]) ? $trait_values[$i] : '';
+                $this->span->setAttribute('data-armory-'.$i_id.'-traits', $i_traits);
             }
         }
     }
