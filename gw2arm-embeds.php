@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       GW2arm-Embeds
- * Description:       Implements a shortcode for simplyfied use of GW2 Armory embeds
- * Version:           0.6.2
+ * Plugin Name:       GuildWars2 Embeddings
+ * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
+ * Version:           0.6.3
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
@@ -10,8 +10,8 @@
  */
 
 
-include 'class_gw2arm_main.php';
-include 'class_gw2arm_embeds.php';
+include 'includes/class_gw2arm_main.php';
+include 'includes/class_gw2arm_embeds.php';
 
 /*
  *  main function called by WP with sc attributes
@@ -30,78 +30,12 @@ function gw2arm_shortcode($atts=[])
 
   // check if scripts are added
   wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
-  wp_enqueue_script('GW2arm-Embeds.js', plugins_url("gw2arm-embeds/gw2arm-embeds.js"), null, null, null);
+  wp_enqueue_script('GW2arm-Embeds.js', plugin_dir_url( __FILE__ ).'public/js/gw2arm-embeds.js', null, null, null);
 
   // return embedding back to wordpress
   return $embedding;
-
-    /*
-
-    // porperly format and filter input sc attributes
-
-    $atts = array_change_key_case((array) $atts, CASE_LOWER);
-
-    // WP-function to prepare attr. and evtl. set defaults
-    $checked_atts = shortcode_atts(
-        array(
-      'type' => 'skills',
-      'id' => '-1',
-      'text' => '',
-      'traits' => '',
-      'inline' => '',
-      'size' => '',
-      'blank' => '',
-    ),
-        $atts
-    );
-
-    // filter empty keys
-    $checked_atts = array_filter($checked_atts);
-
-    if (!gw2arm_check_type($checked_atts)) {
-        $error = '<p style="display:inline; color:red;"> ~~ unexpected shortcode type <i>"'.$atts['type'].'"</i> ~~ </p>';
-        return $error;
-    }
-
-
-    //  trigger create-embedding functions
-
-
-    if ($checked_atts['type'] != 'spec') {
-        if (sizeof($checked_atts) == 2) {
-            $shortcode = new GW2arm_embedBasic();
-        } else {
-            $shortcode = new GW2arm_embedDefault();
-        }
-    } else {
-        $shortcode = new GW2arm_embedsSpec();
-    }
-    $shortcode->setValues($checked_atts);
-    $embed = $shortcode->getEmbed();
-
-
-
-    //  Final Steps
-
-
-    // check if scripts are added
-    wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
-    wp_enqueue_script('GW2arm-Embeds.js', plugins_url("gw2arm-embeds/gw2arm-embeds.js"), null, null, null);
-
-    // give attributes to embed-build-function and return it
-    return $embed;
-*/
 }
 
-// check the sc for valid type
-function gw2arm_check_type($with)
-{
-    if (in_array($with['type'], array('skills', 'spec', 'items', 'amulets'))) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 /**
 * Central location to create all shortcodes.
