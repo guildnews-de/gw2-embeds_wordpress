@@ -3,48 +3,33 @@
 class GW2arm_shortcode
 {
   private $shortcode_atts;
-  private $gw2arm_error;
 
   public function parse_attributes($input_atts){
 
-    $output_atts = $this->format_atts($input_atts);
+    $output_atts = $this->do_format_atts($input_atts);
 
     if ($this->has_valid_type($output_atts)) {
       $this->shortcode_atts = $output_atts;
     } else {
-      $this->error('type not supported');
+      $this->error('type not set or unsupported');
     }
   }
 
-  private function format_atts($raw_atts){
-    $raw_atts = array_change_key_case((array) $raw_atts, CASE_LOWER);
+  private function do_format_atts($raw_atts){
+    // change all to lower case
+    $form_atts = array_change_key_case($raw_atts, CASE_LOWER);
 
-    // WP-function to prepare attr. and evtl. set defaults
-    $form_atts = shortcode_atts(
-        array(
-      'type' => 'skills',
-      'id' => '-1',
-      'text' => '',
-      'traits' => '',
-      'inline' => '',
-      'size' => '',
-      'blank' => '',
-    ),
-        $raw_atts
-    );
-
-    // eliminate spaces between ids
+    // emliminate spaces
     $form_atts['id'] = preg_replace('/\s+/', '', $form_atts['id']);
-    $form_atts['traits'] = preg_replace('/\s+/', '', $form_atts['traits']);
-
-    // filter empty keys
-    $form_atts = array_filter($form_atts);
+    if (isset($form_atts['traits'])) {
+      $form_atts['traits'] = preg_replace('/\s+/', '', $form_atts['traits']);
+    }
 
     return $form_atts;
   }
 
   private function has_valid_type($with){
-    if (in_array($with['type'], array('skills', 'spec', 'items', 'amulets'))) {
+    if (in_array($with['type'], array('skills', 'spec', 'items', 'amulets', 'traits'))) {
         return true;
     } else {
         return false;
@@ -52,24 +37,33 @@ class GW2arm_shortcode
   }
 
   public function get_embedding(){
-    if ($this->shortcode_atts['type'] != 'spec') {
-        if (2 === sizeof($this->shortcode_atts)) {
-            $builder = new GW2arm_embed_basic();
-        } else {
-            $builder = new GW2arm_embed_default();
-        }
-    } else {
-        $builder = new GW2arm_embed_spec();
+    switch ($this->shortcode_atts['type']) {
+      case 'spec':
+        $handler = new GW2arm_embed_spec();
+        break;
+      case 'items':
+        $handler = new GW2arm_embed_items();
+        break;
+      default:
+        $handler = new GW2arm_embed_default();
+        break;
     }
-    $builder->set_values($this->shortcode_atts);
-    $embedding_html = $builder->create_embedding();
+    $handler->set_values($this->shortcode_atts);
+    $embedding_html = $handler->create_embedding();
 
     return $embedding_html;
   }
 
   private function error($string){
-    $message = '<p style="display:inline; color:red;">~~ Shortcode error with <i>"'.$string.'"</i> ~~ </p>';
-    $this->error = $message;
+    $message = array(
+      'type' => 'skills',
+      'id' => '-1',
+      'text' => '',
+      'style' => 'display:inline',
+      'size' => '',
+      'blank' => ' ~~ Shortcode error: "'.$string.'" ~~ ',
+      );
 
+    $this->shortcode_atts = $message;
   }
 }

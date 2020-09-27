@@ -44,7 +44,7 @@ function gw2arm_shortcode($atts=[])
 */
 function gw2arm_shortcodes_init()
 {
-    add_shortcode('gw2arm', 'GW2arm_shortcode');
+    add_shortcode('gw2arm', 'gw2arm_shortcode');
 }
 
 add_action('init', 'gw2arm_shortcodes_init');
