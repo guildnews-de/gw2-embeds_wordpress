@@ -5,9 +5,9 @@ class GW2_Embeddings
     private $plugin_path;
     private $shortcodes = [];
 
-    public function __construct($path)
+    public function __construct($plugin_file)
     {
-        $this->plugin_path = $path;
+        $this->plugin_path = plugin_dir_path( $plugin_file );;
 
         $this->load_includes();
         $this->register_shortcodes();
@@ -25,7 +25,7 @@ class GW2_Embeddings
 
     private function register_shortcodes()
     {
-        $prefix = GW2arm_Snippets::get_sc_prefix();
+        $prefix = GW2_emb_Snippets::get_sc_prefix();
 
         foreach ($this->shortcodes as $tag => $callback) {
 

@@ -17,21 +17,20 @@
  *  main function called by WP with sc attributes
  */
 
- function activate_shortcodes_ultimate() {
+ function activate_gw2_embeddings() {
 
- 	require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_embeddings.php';
-
- 	Shortcodes_Ultimate_Activator::activate();
+ 	//Shortcodes_Ultimate_Activator::activate();
 
  }
 
  register_activation_hook( __FILE__, 'activate_gw2_embeddings' );
 
 
- function run_gw2_embeddings() {
+ function run_gw2_embeddings()
+ {
+   require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_emb.php';
 
-
-
+   $plugin = new GW2_Embeddings(__FILE__);
  }
 
  run_gw2_embeddings();
