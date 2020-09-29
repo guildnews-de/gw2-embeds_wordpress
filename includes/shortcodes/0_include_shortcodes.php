@@ -1,10 +1,10 @@
 <?php
 
-require_once $this->plugin_path . 'includes/shortcodes/amulets.php';
-require_once $this->plugin_path . 'includes/shortcodes/items.php';
-require_once $this->plugin_path . 'includes/shortcodes/skills.php';
-require_once $this->plugin_path . 'includes/shortcodes/specs.php';
-require_once $this->plugin_path . 'includes/shortcodes/traits.php';
+require_once $this->plugin_path . 'includes/shortcodes/function_amulets.php';
+require_once $this->plugin_path . 'includes/shortcodes/function_items.php';
+require_once $this->plugin_path . 'includes/shortcodes/function_skills.php';
+require_once $this->plugin_path . 'includes/shortcodes/function_specs.php';
+require_once $this->plugin_path . 'includes/shortcodes/function_traits.php';
 
 
 function gw2arm_shortcodes_init()
