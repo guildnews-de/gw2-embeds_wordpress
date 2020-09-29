@@ -42,18 +42,27 @@ class GW2_emb_Snippets
 
     public static function get_primary_att($type)
     {
+      if (isset(self::PRIMARY[$type])) {
         $snippet = self::ATTS_PREFIX . self::PRIMARY[$type];
         return $snippet;
+      }
+
+      return;
+
     }
 
     public static function get_secondary_att($id, $type)
     {
-      if (ctype_digit($id)) {
-        $snippet = self::ATTS_PREFIX . $id . self::SECONDARY[$type];
-        return $snippet;
-      } else {
-        return ;
+      if (isset(self::SECONDARY[$type])) {
+        if (ctype_digit($id)) {
+          $snippet = self::ATTS_PREFIX . $id . self::SECONDARY[$type];
+          return $snippet;
+        } else {
+          return 1;
+        }
       }
+
+      return;
 
     }
 
