@@ -1,6 +1,6 @@
 <?php
 
-$this->add_shortcode('amulets');
+GW2_emb_shortcodes::add('amulets');
 
 function gw2emb_amulets($atts = [], $content, $tag){
 
@@ -9,7 +9,5 @@ function gw2emb_amulets($atts = [], $content, $tag){
   $shortcode = new GW2_emb_Shortcode_Parent($atts, $tag);
 
   $embedding = $shortcode->get_embedding();
-
-
 
 }

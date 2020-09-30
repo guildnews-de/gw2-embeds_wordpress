@@ -1,6 +1,6 @@
 <?php
 
-$this->add_shortcode('items');
+GW2_emb_shortcodes::add('items');
 
 function gw2emb_items($atts = [], $content, $tag){
 

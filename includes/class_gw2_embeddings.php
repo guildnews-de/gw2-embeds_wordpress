@@ -3,39 +3,44 @@
 class GW2_Embeddings
 {
     private $plugin_path;
-    private $shortcodes = [];
 
     public function __construct($plugin_file)
     {
-        $this->plugin_path = plugin_dir_path( $plugin_file );;
+        $this->plugin_path = plugin_dir_path($plugin_file);
+        ;
 
         $this->load_includes();
-        $this->register_shortcodes();
+
+        $this->define_common_hooks();
     }
 
+    // include essential files and load shortcodes
     private function load_includes()
     {
-        require_once $this->plugin_path . 'includes/shortcodes/0_include_shortcodes';
+        // load collection-class for code fragments
+        require_once $this->plugin_path . 'includes/class_gw2_emb_snippets.php';
+
+        // load shortcode management class
+        require_once $this->plugin_path . 'includes/class_gw2_emb_shortcodes.php';
+
+        // load available shortcodes
+        require_once $this->plugin_path . 'includes/shortcodes/0_include_shortcodes.php';
     }
 
-    public function add_shortcode($data)
+    private function define_common_hooks()
     {
-        $this->shortcodes[ $data ] = $data.'_shortcode';
-    }
 
-    private function register_shortcodes()
-    {
-        $prefix = GW2_emb_Snippets::get_sc_prefix();
-
-        foreach ($this->shortcodes as $tag => $callback) {
-
-            add_shortcode($prefix . $tag, $callback);
-        }
+        /**
+        * Register available shortcodes.
+        */
+        add_action('init', array( 'GW2_emb_shortcodes', 'register' ));
     }
 }
 
 
-
+/**
+ *  old obsolet class
+ */
 class GW2arm_shortcode
 {
     private $short_atts;

@@ -1,6 +1,6 @@
 <?php
 
-$this->add_shortcode('skills');
+GW2_emb_shortcodes::add('skills');
 
 function gw2emb_skills($atts = [], $content, $tag){
 
@@ -9,4 +9,5 @@ function gw2emb_skills($atts = [], $content, $tag){
   $shortcode = new GW2_emb_Shortcode_Parent($atts, $tag);
 
   $embedding = $shortcode->get_embedding();
+  
 }

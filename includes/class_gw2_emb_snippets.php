@@ -24,19 +24,19 @@ class GW2_emb_Snippets
   );
 
 
-    public static function get_atts_prefix()
+    public static function add_atts_prefix($string)
     {
-        return self::ATTS_PREFIX;
+        return self::ATTS_PREFIX . $string;
     }
 
-    public static function get_sc_prefix()
+    public static function get_sc_prefix($string)
     {
-        return self::SC_PREFIX;
+        return self::SC_PREFIX . $string;
     }
 
-    public static function get_plugin_prefix()
+    public static function add_plugin_prefix($string)
     {
-        return self::PLUGIN_PREFIX;
+        return self::PLUGIN_PREFIX . $string;
     }
 
 

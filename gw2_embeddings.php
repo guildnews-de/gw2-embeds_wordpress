@@ -28,7 +28,7 @@
 
  function run_gw2_embeddings()
  {
-   require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_emb.php';
+   require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_embeddings.php';
 
    $plugin = new GW2_Embeddings(__FILE__);
  }

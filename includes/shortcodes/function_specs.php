@@ -1,6 +1,6 @@
 <?php
 
-$this->add_shortcode('specs');
+GW2_emb_shortcodes::add('specs');
 
 function gw2emb_specs($atts = [], $content, $tag){
 

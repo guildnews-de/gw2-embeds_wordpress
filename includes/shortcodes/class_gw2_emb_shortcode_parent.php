@@ -1,4 +1,7 @@
 <?php
+/**
+ *  Basic embedding contructor class
+ */
 
 class GW2_emb_Shortcode_Parent
 {
@@ -27,7 +30,8 @@ class GW2_emb_Shortcode_Parent
     public function __construct($atts, $tag)
     {
         // save essential info
-        $this->sc_tag = $tag;
+        $sc_prefix_length = strlen(get_sc_prefix());
+        $this->sc_tag = substr($tag, $sc_prefix_length+1);
         $this->id_array = explode($atts['id']);
 
         // prepare empty html-element
@@ -60,36 +64,70 @@ class GW2_emb_Shortcode_Parent
 
     protected function parse_attributes($atts)
     {
+        foreach ($atts as $key => $value) {
+            $success = false;
+            $success = parse_primary_att($key, $value);
+            if (!$success) {
+                $success = parse_secondary_att($key, $value);
+            }
+            if ($success) {
+                unset($atts[$key]);
+            }
+        }
+
+        if (sizeof($atts) > 0) {
+            // stop if atts-array still not empty
+            shortcode_error('leftover attributes');
+            return;
+        }
+
         $this->status['ready'] = true;
+    }
+
+    private function parse_primary_att($att_tag, $value_str)
+    {
+        $success = false;
+        $success = push_attribute($att_tag, $value_str);
+
+        return $success;
     }
 
     private function parse_secondary_att($att_tag, $value_str)
     {
-        $items = explode(';', $value_str);
+        $ids = $this->$id_array;
+        $fragments = explode(';', $value_str);
+        $success = false;
 
-        foreach ($this->id_array as $pos => $id) {
-            if (isset($items[$pos])) {
-                push_item_adds($att_tag, $items[$pos], $id);
+        foreach ($fragments as $pos => $value) {
+            if (isset($ids[$pos])) {
+                $success = push_attribute($att_tag, $value, $ids[$pos]);
             }
         }
+        return $success;
     }
 
     // add an attribut with its value to output_array
     private function push_attribute($att_tag, $value, $att_id=null)
     {
         if (isset($att_id)) {
+            // process secondary attributes (witch need IDs)
             $attribute = GW2_emb_Snippets::get_secondary_att($item_id, $att_tag);
         } else {
+            // process primary attributes
             $attribute = GW2_emb_Snippets::get_primary_att($att_tag);
         }
 
         if (!isset($attribute)) {
             shortcode_error('attributes incompatible');
+            return false;
         } elseif ($attribute === 1) {
             shortcode_error('wrong id format');
+            return false;
+        } else {
+            // add attribute => value to output_array
+            $this->output_array[$attribute] = $value;
         }
-
-        $this->output_array[$attribute] = $value;
+        return true;
     }
 
 

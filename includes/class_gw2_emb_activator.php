@@ -4,20 +4,14 @@
  * Fired during plugin activation.
  *
  * This class defines all code necessary to run during the plugin's activation.
- *
- * @since        5.0.0
- * @package      Shortcodes_Ultimate
- * @subpackage   Shortcodes_Ultimate/includes
  */
-class Shortcodes_Ultimate_Activator {
+class GW2_Embeddings_Activator {
 
 	private static $required_php;
 	private static $required_wp;
 
 	/**
 	 * Plugin activation.
-	 *
-	 * @since    5.0.0
 	 */
 	public static function activate() {
 
@@ -32,9 +26,6 @@ class Shortcodes_Ultimate_Activator {
 
 	/**
 	 * Check PHP version.
-	 *
-	 * @access  private
-	 * @since   5.0.0
 	 */
 	private static function check_php_version() {
 
@@ -46,7 +37,7 @@ class Shortcodes_Ultimate_Activator {
 
 		$message = sprintf(
 			// Translators: %1$s - required version number, %2$s - current version number
-			__( 'Shortcodes Ultimate is not activated, because it requires PHP version %1$s (or higher). You have version %2$s.', 'shortcodes-ultimate' ),
+			__( 'GW2 Embeddings is not activated, because it requires PHP version %1$s (or higher). You have version %2$s.', 'gw2-embeddings' ),
 			self::$required_php,
 			$current
 		);
@@ -57,9 +48,6 @@ class Shortcodes_Ultimate_Activator {
 
 	/**
 	 * Check WordPress version.
-	 *
-	 * @access  private
-	 * @since   5.0.0
 	 */
 	private static function check_wp_version() {
 
@@ -71,34 +59,12 @@ class Shortcodes_Ultimate_Activator {
 
 		$message = sprintf(
 			// Translators: %1$s - required version number, %2$s - current version number
-			__( 'Shortcodes Ultimate is not activated, because it requires WordPress version %1$s (or higher). You have version %2$s.', 'shortcodes-ultimate' ),
+			__( 'GW2 Embeddings is not activated, because it requires WordPress version %1$s (or higher). You have version %2$s.', 'gw2-embeddings' ),
 			self::$required_wp,
 			$current
 		);
 
 		die( esc_html( $message ) );
-
-	}
-
-	/**
-	 * Setup plugin's default settings.
-	 *
-	 * @access  private
-	 * @since   5.0.0
-	 */
-	private static function setup_defaults() {
-
-		$defaults = su_get_config( 'default-settings' );
-
-		foreach ( $defaults as $option => $value ) {
-
-			if ( get_option( $option, 0 ) !== 0 ) {
-				continue;
-			}
-
-			add_option( $option, $value );
-
-		}
 
 	}
 

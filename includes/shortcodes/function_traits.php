@@ -1,6 +1,6 @@
 <?php
 
-$this->add_shortcode('traits');
+GW2_emb_shortcodes::add('traits');
 
 function gw2emb_traits($atts = [], $content, $tag){
 
