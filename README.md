@@ -1,24 +1,32 @@
 # gw2arm-embeds
 
-This is a Wordpress plugin to make it easier to use the [GW2 armory embeds](https://github.com/madou/armory-embeds).
+This is a Wordpress plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
 Simply download the zip an install it in Wordpress-Plugin-Manager.
 
 Be careful! Plugin is under development! Incompatibility could lead to a nonfunctional website!
 
 # How it works
 
-It adds the shortcode `[gw2arm]` to wordpress. You have to add the needed options similar identical to the original. (I shorted 'specializations' to 'spec'!)
+It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress. You have to add the needed options similar to the original GW2 Armory Embeddings
 Supported parameters are:
 
-parameter | value | original
-------------|------------|------------
-type  |  amulets/items/skills/spec | data-armory-embed
-id  |  amulet/item/skill/spec ID  | data-armory-ids
-traits  |  trait IDs (read multi-view instructions)  |  data-armory-\<id>-traits
-text  |  wiki / gw2spidy  |  data-armory-inline-text
-blank  |  any text  |  data-armory-blank-text
-size  |  number  |  data-armory-size
-inline  |  1  |  -none-
+main parameter  | value                                       | original
+------------    |------------                                 |------------
+id              |  ID(s) to be viewed (e.g. skill-IDs)        |  data-armory-ids
+text            |  wiki / gw2spidy                            |  data-armory-inline-text
+blank           |  any text                                   |  data-armory-blank-text
+size            |  number (for custom icon size)              |  data-armory-size
+style           |  inline (mods the embed to be viewed inline with text)                                          |  -none-
+spec parameter  |  value                                      |  original
+------------    |------------                                 |------------
+traits          |  trait IDs (read multi-view instructions)   |  data-armory-\<id>-traits
+item parameter  | value                                       |  original
+------------    |------------                                 |------------
+skin            |  skin ID                                    |  data-armory-\<id>-skin
+stat            |  stat ID                                    |  data-armory-\<id>-stat
+upgrade         |  upgrade IDs (for multiple upgrades add +count e.g. 24815+3)                                                      |  data-armory-\<id>-upgrades
+infusions       |  infusion ID                                |  data-armory-\<id>-infusions
+
 
 Character view and item skin/stat/upgrade additions are not implemented yet.
 

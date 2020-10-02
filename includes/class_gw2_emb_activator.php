@@ -20,7 +20,6 @@ class GW2_Embeddings_Activator {
 
 		self::check_php_version();
 		self::check_wp_version();
-		self::setup_defaults();
 
 	}
 

@@ -7,11 +7,13 @@ class GW2_Embeddings
     public function __construct($plugin_file)
     {
         $this->plugin_path = plugin_dir_path($plugin_file);
-        ;
 
         $this->load_includes();
 
         $this->define_common_hooks();
+
+        GW2_emb_Snippets::$plugin_path = plugin_dir_path($plugin_file);
+        GW2_emb_Snippets::$plugin_url = plugin_dir_url($plugin_file);
     }
 
     // include essential files and load shortcodes

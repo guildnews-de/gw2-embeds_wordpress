@@ -11,7 +11,6 @@ class GW2_emb_Snippets
   'text' => 'inline-text',
   'size' => 'size',
   'blank' => 'blank-text',
-  'style' => 'style',
   );
 
     const SECONDARY = array(
@@ -19,17 +18,24 @@ class GW2_emb_Snippets
   'skin' => '-skin',
   'stat' => '-stat',
   'infusions' => '-infusions',
-  'upgrades' => '-upgrades',
+  'upgrade' => '-upgrades',
   'count' => '-upgrade-count',
   );
 
+
+    public static $plugin_path;
+    public static $plugin_url;
+
+    /**
+    *   calls for some snippet strings
+    */
 
     public static function add_atts_prefix($string)
     {
         return self::ATTS_PREFIX . $string;
     }
 
-    public static function get_sc_prefix($string)
+    public static function add_sc_prefix($string)
     {
         return self::SC_PREFIX . $string;
     }
@@ -51,7 +57,7 @@ class GW2_emb_Snippets
 
     }
 
-    public static function get_secondary_att($id, $type)
+    public static function get_secondary_att($type, $id)
     {
       if (isset(self::SECONDARY[$type])) {
         if (ctype_digit($id)) {
@@ -61,9 +67,25 @@ class GW2_emb_Snippets
           return 1;
         }
       }
-
       return;
+    }
 
+    /**
+    *   requirement calls for the shortcode handlers
+    */
+
+    public static function require_sc_default(){
+      require_once self::$plugin_path . 'includes/shortcodes/class_gw2_emb_shortcode_default.php';
+    }
+
+    public static function require_sc_items(){
+      self::require_sc_default();
+      require_once self::$plugin_path . 'includes/shortcodes/class_gw2_emb_shortcode_items.php';
+    }
+
+    public static function require_sc_specs(){
+      self::require_sc_default();
+      require_once self::$plugin_path . 'includes/shortcodes/class_gw2_emb_shortcode_specs.php';
     }
 
 }

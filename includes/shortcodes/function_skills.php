@@ -2,12 +2,15 @@
 
 GW2_emb_shortcodes::add('skills');
 
-function gw2emb_skills($atts = [], $content, $tag){
+function gw2emb_skills_handler($atts = [], $content, $tag){
 
-  require_once $this->plugin_path . 'includes/shortcodes/GW2_emb_Shortcode_Parent.php';
+  GW2_emb_Snippets::require_sc_default();
 
-  $shortcode = new GW2_emb_Shortcode_Parent($atts, $tag);
+  $shortcode = new GW2_emb_Shortcode_Default($atts, $tag);
 
   $embedding = $shortcode->get_embedding();
-  
+
+  GW2_emb_shortcodes::check_scripts();
+
+  return $embedding;
 }

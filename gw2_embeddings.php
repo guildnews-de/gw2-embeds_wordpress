@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       GW2 Embeddings
  * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           0.7
+ * Version:           0.8
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
@@ -19,7 +19,8 @@
 
  function activate_gw2_embeddings() {
 
- 	//Shortcodes_Ultimate_Activator::activate();
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_emb_activator.php';
+ 	GW2_Embeddings_Activator::activate();
 
  }
 
@@ -36,7 +37,7 @@
  run_gw2_embeddings();
 
 
-
+/*
 
 function gw2arm_shortcode($sc_atts=[],$sc_content,$sc_tag)
 {
@@ -61,12 +62,12 @@ function gw2arm_shortcode($sc_atts=[],$sc_content,$sc_tag)
   return $embedding;
 }
 
-/**
-* Central location to create all shortcodes.
-*/
+
 function gw2arm_shortcodes_init()
 {
     add_shortcode('gw2arm', 'gw2arm_shortcode');
 }
 
 add_action('init', 'gw2arm_shortcodes_init');
+
+*/

@@ -14,7 +14,7 @@ class GW2_emb_shortcodes
     // triggered by each shortcode file
     public static function add($data)
     {
-        self::$shortcodes[ $data ] = $data.'_shortcode';
+        self::$shortcodes[ $data ] = $data.'_handler';
     }
 
     // init-function for wordpress
@@ -28,4 +28,12 @@ class GW2_emb_shortcodes
             add_shortcode($prefix . $tag, $prefix . $callback);
         }
     }
+
+    public static function check_scripts(){
+        // check if scripts are added
+        wp_enqueue_script('GW2arm-locale.js', GW2_emb_Snippets::$plugin_url . 'languages/js/gw2arm_locale.js', null, null, true);
+        wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
+
+
+  }
 }
