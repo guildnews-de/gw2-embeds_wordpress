@@ -35,18 +35,21 @@ infusions       |  infusion ID                                |  data-armory-\<i
 # Multi-view with additional parameters
 
 To view multiple trait lines at once or multiple items with different upgrades you have to use a special syntax.
-You can fill in the ids just as usual. But the selected traits or item-parameters have to be in the same string, seperated with an ';'. In the same order as the ids.
+You can fill in the ids just as usual. But the selected traits or item-parameters have to be in the same string, seperated with an semicolon ';'. In the same order as the ids.
 
-Example (wrapped lines only to clarify the structure):
-```
+## Example (wrapped lines only to clarify the structure):
+
 Two trait-lines with chosen traits:
+```
+                        Traitline 1      Traitline 2
 [gw2emb_specs     id  = 56             , 55
               traits  = 2177,2061,2090 ; 2071,2085,2143 ]
 ```
 
 Three different items in row. First two with upgrades. The third with an infusion. (First two without infu):
 ```
-[gw2emb_items     id  = 1379  , 1378          , 1377
-            upgrades  = 24615 ; 24615,24815+4
-           infusions  = 0     ; 0             ; 49426,49426 ]
+                        Item 1    Item 2          Item 3
+[gw2emb_items     id  = 1379    , 1378          , 1377
+            upgrades  = 24615   ; 24615,24815+4
+           infusions  = 0       ; 0             ; 49426,49426 ]
 ```
