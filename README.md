@@ -1,4 +1,5 @@
-# GW2 Embeddings
+# GW2 Embeddings (for Wordpress)
+
 
 This is a Wordpress-plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
 It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress.
