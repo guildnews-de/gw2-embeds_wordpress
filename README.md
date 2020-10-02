@@ -1,13 +1,13 @@
-# gw2arm-embeds
+# GW2 Embeddings
 
-This is a Wordpress plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
-Simply download the zip an install it in Wordpress-Plugin-Manager.
+This is a Wordpress-plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
+It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress. You have to fill in the parameters very similar to the original. See [`Armory-embeds-Storybook`](https://madou.github.io/armory-embeds) for more information.
 
-Be careful! Plugin is under development! Incompatibility could lead to a nonfunctional website!
+Be careful! Plugin is under development! Bugs could lead to a nonfunctional website!
 
 # How it works
 
-It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress. You have to add the needed options similar to the original GW2 Armory Embeddings
+ You have to add the needed options similar to the original GW2 Armory Embeddings
 Supported parameters are:
 
 main parameter  | value                                       | original
@@ -17,9 +17,11 @@ text            |  wiki / gw2spidy                            |  data-armory-inl
 blank           |  any text                                   |  data-armory-blank-text
 size            |  number (for custom icon size)              |  data-armory-size
 style           |  inline (mods the embed to be viewed inline with text)                                          |  -none-
+------------    |------------                                 |------------
 spec parameter  |  value                                      |  original
 ------------    |------------                                 |------------
 traits          |  trait IDs (read multi-view instructions)   |  data-armory-\<id>-traits
+------------    |------------                                 |------------
 item parameter  | value                                       |  original
 ------------    |------------                                 |------------
 skin            |  skin ID                                    |  data-armory-\<id>-skin
