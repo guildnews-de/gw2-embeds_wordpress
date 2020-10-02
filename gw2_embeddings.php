@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       GuildWars2 Embeddings
+ * Plugin Name:       GW2 Embeddings
  * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           0.6.4
+ * Version:           0.8
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
@@ -17,16 +17,39 @@
  *  main function called by WP with sc attributes
  */
 
-function gw2arm_shortcode($atts=[])
+ function activate_gw2_embeddings() {
+
+  require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_emb_activator.php';
+ 	GW2_Embeddings_Activator::activate();
+
+ }
+
+ register_activation_hook( __FILE__, 'activate_gw2_embeddings' );
+
+
+ function run_gw2_embeddings()
+ {
+   require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_embeddings.php';
+
+   $plugin = new GW2_Embeddings(__FILE__);
+ }
+
+ run_gw2_embeddings();
+
+
+/*
+
+function gw2arm_shortcode($sc_atts=[],$sc_content,$sc_tag)
 {
   require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_main.php';
   require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_embeds.php';
+  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_snippets.php';
 
   // open new instance of shortcode builder
   $shortcode = new GW2arm_shortcode();
 
   // give attributes-array to builder
-  $shortcode->parse_attributes($atts);
+  $shortcode->parse_attributes($sc_atts);
 
   // trigger embed-building functions and get final embedding html
   $embedding = $shortcode->get_embedding();
@@ -39,12 +62,12 @@ function gw2arm_shortcode($atts=[])
   return $embedding;
 }
 
-/**
-* Central location to create all shortcodes.
-*/
+
 function gw2arm_shortcodes_init()
 {
     add_shortcode('gw2arm', 'gw2arm_shortcode');
 }
 
 add_action('init', 'gw2arm_shortcodes_init');
+
+*/
