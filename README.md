@@ -28,7 +28,7 @@ item attributes | value                                       |  original
 ------------    |------------                                 |------------
 skin            |  skin ID                                    |  data-armory-\<id>-skin
 stat            |  stat ID                                    |  data-armory-\<id>-stat
-upgrade         |  upgrade IDs (for multiple upgrades add +count e.g. 24815+3)  |  data-armory-\<id>-upgrades
+upgrade         |  upgrade IDs (for stacked upgrades add +count e.g. 24815+3)  |  data-armory-\<id>-upgrades
 infusions       |  infusion ID                                |  data-armory-\<id>-infusions
 
 
