@@ -5,14 +5,15 @@ This is a Wordpress-plugin to make it easier to use the [`GW2 armory embeds`](ht
 It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress.
 You have to fill in the attributes very similar to the original. See [`Armory-embeds-Storybook`](https://madou.github.io/armory-embeds) for detailed information.
 
-Be careful! Plugin is under development! Bugs could lead to a nonfunctional website!
 
 # Cheatsheet
 
 You have to add the needed options similar to the original GW2 Armory Embeddings
 Supported parameters are:
 
-main attributes  | value                                       | original
+
+main attributes | value                                       | original
+
 ------------    |------------                                 |------------
 id              |  ID(s) to be viewed (e.g. skill-IDs)        |  data-armory-ids
 text            |  wiki / gw2spidy                            |  data-armory-inline-text
@@ -36,7 +37,7 @@ infusions       |  infusion ID                                |  data-armory-\<i
 # Multi-view
 
 To view multiple trait lines at once or multiple items with different upgrades you have to use a special syntax.
-You can fill in the ids just as usual. But the selected traits or item-attributes have to be in the same string, seperated with an semicolon ';'. In the same order as the ids.
+You can fill in the ids just as usual. But the selected traits or item-attributes have to be in the same string, separated with an semicolon ';'. In the same order as the ids.
 
 ## Example:
 (wrapped lines only to clarify the structure)

@@ -2,72 +2,43 @@
 /**
  * Plugin Name:       GW2 Embeddings
  * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           0.8
+ * Version:           0.8.1
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
  * License URI:       https://opensource.org/licenses/BSD-3-Clause
  */
 
- if ( ! defined( 'WPINC' ) ) {
- 	die;
- }
+if (! defined('WPINC')) {
+    die;
+}
+
 
 /*
- *  main function called by WP with sc attributes
+ *  some checks during plugin activation
  */
 
- function activate_gw2_embeddings() {
+function activate_gw2_embeddings()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class_gw2_emb_activator.php';
+    GW2_Embeddings_Activator::activate();
+}
 
-  require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_emb_activator.php';
- 	GW2_Embeddings_Activator::activate();
-
- }
-
- register_activation_hook( __FILE__, 'activate_gw2_embeddings' );
-
-
- function run_gw2_embeddings()
- {
-   require_once plugin_dir_path( __FILE__ ) . 'includes/class_gw2_embeddings.php';
-
-   $plugin = new GW2_Embeddings(__FILE__);
- }
-
- run_gw2_embeddings();
+register_activation_hook(__FILE__, 'activate_gw2_embeddings');
 
 
 /*
+ *  triggers the main plugin class
+ */
 
-function gw2arm_shortcode($sc_atts=[],$sc_content,$sc_tag)
+function run_gw2_embeddings()
 {
-  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_main.php';
-  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_embeds.php';
-  require_once plugin_dir_path( __FILE__ ) .'includes/class_gw2arm_snippets.php';
+    // helper-class with code fragments and som shortcuts
+    require_once plugin_dir_path(__FILE__) . 'includes/class_gw2_emb_snip.php';
+    // main plugin class
+    require_once plugin_dir_path(__FILE__) . 'includes/class_gw2_embeddings.php';
 
-  // open new instance of shortcode builder
-  $shortcode = new GW2arm_shortcode();
-
-  // give attributes-array to builder
-  $shortcode->parse_attributes($sc_atts);
-
-  // trigger embed-building functions and get final embedding html
-  $embedding = $shortcode->get_embedding();
-
-  // check if scripts are added
-  wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
-  wp_enqueue_script('GW2arm-locale.js', plugin_dir_url( __FILE__ ).'languages/js/gw2arm_locale.js', null, null, null);
-
-  // return embedding back to wordpress
-  return $embedding;
+    $plugin = new GW2_Embeddings(__FILE__);
 }
 
-
-function gw2arm_shortcodes_init()
-{
-    add_shortcode('gw2arm', 'gw2arm_shortcode');
-}
-
-add_action('init', 'gw2arm_shortcodes_init');
-
-*/
+run_gw2_embeddings();

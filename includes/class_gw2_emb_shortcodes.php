@@ -4,8 +4,7 @@
  *  Shortcode management class
  */
 
-
-class GW2_emb_shortcodes
+class GW2_emb_Shortcodes
 {
 
     private static $shortcodes = [];
@@ -20,7 +19,7 @@ class GW2_emb_shortcodes
     // init-function for wordpress
     public static function register()
     {
-        $prefix = GW2_emb_Snippets::SC_PREFIX;
+        $prefix = GW2_emb_Snip::SC_PREFIX;
         $shortcodes = self::$shortcodes;
 
         foreach ($shortcodes as $tag => $callback) {
@@ -31,7 +30,7 @@ class GW2_emb_shortcodes
 
     public static function check_scripts(){
         // check if scripts are added
-        wp_enqueue_script('GW2arm-locale.js', GW2_emb_Snippets::$plugin_url . 'languages/js/gw2arm_locale.js', null, null, true);
+        wp_enqueue_script('GW2arm-locale.js', GW2_emb_Snip::$plugin_url . 'languages/js/gw2arm_locale.js', null, null, true);
         wp_enqueue_script('armory-embeds.js', "https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js", null, null, true);
 
 
