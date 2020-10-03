@@ -1,5 +1,5 @@
 <?php
-class GW2_emb_Snippets
+class GW2_emb_Snip
 {
     const PLUGIN_PREFIX = 'gw2_embeddings_';
     const SC_PREFIX = 'gw2emb_';
