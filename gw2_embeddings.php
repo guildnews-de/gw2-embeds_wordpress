@@ -9,7 +9,8 @@
  * License URI:       https://opensource.org/licenses/BSD-3-Clause
  */
 
-if (! defined('WPINC')) {
+if (! defined('WPINC'))
+{
     die;
 }
 

@@ -8,23 +8,23 @@ GW2_emb_Shortcodes::add('specs');
 /**
  *  called by Wordpress, if shortcode is used
  */
-function gw2emb_specs_handler($atts = [], $content, $tag){
+function gw2emb_specs_handler($atts = [], $content, $tag)
+{
+    // check dependencies
+    GW2_emb_Snip::require_sc_specs();
 
-  // check dependencies
-  GW2_emb_Snip::require_sc_specs();
+    // extend sc-tag to complete word
+    $tag = GW2_emb_Snip::SC_PREFIX.'specializations';
 
-  // extend sc-tag to complete word
-  $tag = GW2_emb_Snip::SC_PREFIX.'specializations';
+    // open new shortcode-instance
+    $shortcode = new GW2_emb_Shortcode_Specs($atts, $tag);
 
-  // open new shortcode-instance
-  $shortcode = new GW2_emb_Shortcode_Specs($atts, $tag);
+    // cache the automatically created embedding code
+    $embedding = $shortcode->get_embedding();
 
-  // cache the automatically created embedding code
-  $embedding = $shortcode->get_embedding();
+    // check if armory-embed scripts are added
+    GW2_emb_Shortcodes::check_scripts();
 
-  // check if armory-embed scripts are added
-  GW2_emb_Shortcodes::check_scripts();
-
-  // hand over the embedding back to wordpress
-  return $embedding;
+    // hand over the embedding back to wordpress
+    return $embedding;
 }

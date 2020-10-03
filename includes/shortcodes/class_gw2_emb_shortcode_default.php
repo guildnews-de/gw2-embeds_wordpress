@@ -20,16 +20,16 @@ class GW2_emb_Shortcode_Default
       );
 
     // cache for basic shortcode information
-    protected $sc_tag;
+    private $sc_tag;
     protected $id_array = [];
-    protected $output_array = [];
+    private $output_array = [];
 
     // cache for final html-element
-    protected $dom;
-    protected $span;
+    private $dom;
+    private $span;
 
     // error handling
-    protected $status = array(
+    private $status = array(
       'ready' => false,
       'error' => false,
       'msg' => '[ GW2emb Error: ',
@@ -38,7 +38,6 @@ class GW2_emb_Shortcode_Default
 
     public function __construct($atts, $tag)
     {
-
         // save essential info
         $sc_prefix_length = strlen(GW2_emb_Snip::SC_PREFIX);
         $this->sc_tag = substr($tag, $sc_prefix_length);

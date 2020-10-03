@@ -6,15 +6,6 @@
 
 class GW2_emb_Shortcode_Items extends GW2_emb_Shortcode_Default
 {
-    // primary attributes
-    protected $filter_array_prim = array(
-      'id' => '',
-      'text' => '',
-      'blank' => '',
-      'style' => '',
-      'size' => '',
-      );
-
     // secondary attributes
     protected $filter_array_sec = array(
       'skin' => '',
