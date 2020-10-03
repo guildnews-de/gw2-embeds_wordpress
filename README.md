@@ -2,13 +2,13 @@
 
 
 This is a Wordpress-plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
-It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits] ` to wordpress.
+It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits]` to wordpress.
 You have to fill in the attributes very similar to the original. See [`Armory-embeds-Storybook`](https://madou.github.io/armory-embeds) for detailed information.
 
 
 # Cheatsheet
 
-You have to add the needed options similar to the original GW2 Armory Embeddings
+You have to add the needed options similar to the original GW2 Armory Embeddings.
 Supported parameters are:
 
 
@@ -28,7 +28,7 @@ item attributes | value                                       |  original
 ------------    |------------                                 |------------
 skin            |  skin ID                                    |  data-armory-\<id>-skin
 stat            |  stat ID                                    |  data-armory-\<id>-stat
-upgrade         |  upgrade IDs (for stacked upgrades add +count e.g. 24815+3)  |  data-armory-\<id>-upgrades
+upgrade         |  upgrade IDs (for stacked runes add +count e.g. 24815+3)  |  data-armory-\<id>-upgrades
 infusions       |  infusion ID                                |  data-armory-\<id>-infusions
 
 
