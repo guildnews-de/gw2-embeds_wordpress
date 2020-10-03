@@ -11,7 +11,9 @@ You have to fill in the attributes very similar to the original. See [`Armory-em
 You have to add the needed options similar to the original GW2 Armory Embeddings
 Supported parameters are:
 
+
 main attributes | value                                       | original
+
 ------------    |------------                                 |------------
 id              |  ID(s) to be viewed (e.g. skill-IDs)        |  data-armory-ids
 text            |  wiki / gw2spidy                            |  data-armory-inline-text
@@ -29,6 +31,7 @@ skin            |  skin ID                                    |  data-armory-\<i
 stat            |  stat ID                                    |  data-armory-\<id>-stat
 upgrade         |  upgrade IDs (for multiple upgrades add +count e.g. 24815+3)  |  data-armory-\<id>-upgrades
 infusions       |  infusion ID                                |  data-armory-\<id>-infusions
+
 
 
 # Multi-view
