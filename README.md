@@ -13,7 +13,6 @@ Supported parameters are:
 
 
 main attributes | value                                       | original
-
 ------------    |------------                                 |------------
 id              |  ID(s) to be viewed (e.g. skill-IDs)        |  data-armory-ids
 text            |  wiki / gw2spidy                            |  data-armory-inline-text
