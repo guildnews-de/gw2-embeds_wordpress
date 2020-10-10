@@ -167,7 +167,7 @@ class GW2_emb_Shortcode_Default
     protected function parse_inline_att($atts)
     {
         if ($atts['style'] === 'inline') {
-            $this->output_array['style'] = 'display: inline-block; vertical-align: bottom;';
+            $this->output_array['style'] = 'display: inline-block;';
             if (!isset($atts['size'])) {
                 $atts['size'] = '20';
             }
