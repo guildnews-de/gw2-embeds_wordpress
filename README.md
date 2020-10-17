@@ -15,7 +15,7 @@ Supported parameters are:
 main attributes | value                                       | original
 ------------    |------------                                 |------------
 id              |  ID(s) to be viewed (e.g. skill-IDs)        |  data-armory-ids
-text            |  wiki / gw2spidy                            |  data-armory-inline-text
+text            |  wiki (or gw2spidy)                            |  data-armory-inline-text
 blank           |  any text                                   |  data-armory-blank-text
 size            |  number (for custom icon size)              |  data-armory-size
 style           |  inline (mods the embed to be viewed inline with text)       |  -none-
