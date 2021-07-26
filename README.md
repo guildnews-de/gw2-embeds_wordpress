@@ -48,7 +48,7 @@ Shortcode:
 [gw2emb_specs  id=56,55  traits=2177,2061,2090; 2071,2085,2143 ]
 
 Same shortcode with wrapped lines (to clarify the structure):
-                        Traitline 1      Traitline 2
+                        (Traitline 1)    (Traitline 2)
 [gw2emb_specs     id  = 56             , 55
               traits  = 2177,2061,2090 ; 2071,2085,2143 ]
 ```
@@ -61,10 +61,10 @@ Shortcode:
 
 Same shortcode with wrapped lines (to clarify the structure):
 
-[gw2emb_items id=9333 
-              text=wiki 
-              style=inline 
-              count=10]
+[gw2emb_items id    = 9333 
+              text  = wiki 
+              style = inline 
+              count = 10    ]
 ```
 
 Three different equipment-items in one shortcode. First two with upgrades. The third with an infusion. (First two without infu):
@@ -73,7 +73,7 @@ Shortcode:
 [gw2emb_items  id=1379,1378,1377  upgrades=24615;24615,24815+4  infusions=0; 0; 49426,49426 ]
 
 Same shortcode with wrapped lines (to clarify the structure):
-                        Item 1    Item 2          Item 3
+                        (Item 1)  (Item 2)        (Item 3)
 [gw2emb_items     id  = 1379    , 1378          , 1377
             upgrades  = 24615   ; 24615,24815+4
            infusions  = 0       ; 0             ; 49426,49426 ]
