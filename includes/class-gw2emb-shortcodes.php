@@ -1,16 +1,27 @@
 <?php
 /**
- * Mein Shortcodes Management class
+ * Main Shortcodes Management class
  *
  * @package GW2Embeds/Shortcodes
  */
 
 /** Shortcode class */
 class GW2Emb_Shortcodes {
+	/**
+	 * Shortcode prefix
+	 *
+	 * @var string
+	 */
+	const PREFIX = 'gw2emb_';
+	/**
+	 * HTML dataset prefix
+	 *
+	 * @var string
+	 */
+	const DATASET = 'data-gw2-';
 
 	/**
 	 * Static buffer for shortcodes
-	 *
 	 * Filled through add-Method during load of individual shortcode files.
 	 *
 	 * @var array of sc-tag => sc-tag_handler pairs.
@@ -33,12 +44,9 @@ class GW2Emb_Shortcodes {
 	 * @return void
 	 */
 	public static function register() {
-		$prefix     = GW2Emb_Snip::SC_PREFIX;
-		$shortcodes = self::$shortcodes;
+		foreach ( self::$shortcodes as $tag => $callback ) {
 
-		foreach ( $shortcodes as $tag => $callback ) {
-
-			add_shortcode( $prefix . $tag, $prefix . $callback );
+			add_shortcode( self::PREFIX . $tag, self::PREFIX . $callback );
 		}
 	}
 
@@ -48,8 +56,7 @@ class GW2Emb_Shortcodes {
 	 * @return void
 	 */
 	public static function check_scripts() {
-		wp_enqueue_script( 'GW2arm-locale.js', GW2Emb_Snip::$plugin_url . 'languages/js/gw2arm_locale.js', null, '1.0', true );
-		wp_enqueue_script( 'armory-embeds.js', 'https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js', null, '0.x', true );
+		wp_enqueue_script( 'gw2-embeds.js', GW2Embeds::$url . 'public/gw2-embeds/gw2-embeds.js', null, '0.1', true );
 
 	}
 }

@@ -5,7 +5,7 @@
  * @package GW2Embeds/Shortcodes
  */
 
-GW2_emb_Shortcodes::add( 'specs' );
+GW2Emb_Shortcodes::add( 'coins' );
 
 /**
  * Called by WordPress, if shortcode is used
@@ -15,21 +15,27 @@ GW2_emb_Shortcodes::add( 'specs' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_specs_handler( $atts = array(), $content, $tag ) {
-	// check dependencies.
-	GW2Emb_Snip::require_sc_specs();
+function gw2emb_coins_handler( $atts = array(), $content, $tag ) {
 
-	// extend sc-tag to complete word.
-	$tag = GW2Emb_Snip::SC_PREFIX . 'specializations';
+	$filter = array(
+		'value'  => '',
+		'class'  => '',
+		'size'   => '',
+		'inline' => '',
+		'style'  => '',
+
+	);
+
+	require_once GW2Embeds::$path . 'includes/shortcodes/class-gw2emb-html-builder.php';
 
 	// open new shortcode-instance.
-	$shortcode = new GW2_emb_Shortcode_Specs( $atts, $tag );
+	$shortcode = new GW2Emb_HTML_Builder( $atts, $tag, $filter );
 
 	// cache the automatically created embedding code.
 	$embedding = $shortcode->get_embedding();
 
 	// check if armory-embed scripts are added.
-	GW2_emb_Shortcodes::check_scripts();
+	GW2Emb_Shortcodes::check_scripts();
 
 	// hand over the embedding back to WordPress.
 	return $embedding;

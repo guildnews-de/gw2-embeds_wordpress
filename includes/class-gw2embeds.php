@@ -9,7 +9,19 @@
  */
 
 /** Main Plugin class */
-class GW2Emb_Main {
+class GW2Embeds {
+	/**
+	 * Plugin Path
+	 *
+	 * @var string
+	 */
+	public static $path;
+	/**
+	 * Plugin URL
+	 *
+	 * @var string
+	 */
+	public static $url;
 
 	/**
 	 * Constructor
@@ -17,8 +29,8 @@ class GW2Emb_Main {
 	 * @param  string $plugin_file path string.
 	 */
 	public function __construct( $plugin_file ) {
-		GW2Emb_Snip::$plugin_path = plugin_dir_path( $plugin_file );
-		GW2Emb_Snip::$plugin_url  = plugin_dir_url( $plugin_file );
+		self::$path = plugin_dir_path( $plugin_file );
+		self::$url  = plugin_dir_url( $plugin_file );
 
 		$this->load_includes();
 		$this->define_common_hooks();
@@ -32,10 +44,10 @@ class GW2Emb_Main {
 	private function load_includes() {
 
 		// load shortcode management class.
-		require_once GW2Emb_Snip::$plugin_path . 'includes/class-gw2emb-shortcodes.php';
+		require_once self::$path . 'includes/class-gw2emb-shortcodes.php';
 
 		// load available shortcodes.
-		require_once GW2Emb_Snip::$plugin_path . 'includes/shortcodes/0-include-shortcodes.php';
+		require_once self::$path . 'includes/shortcodes/0-include-shortcodes.php';
 	}
 
 	/**

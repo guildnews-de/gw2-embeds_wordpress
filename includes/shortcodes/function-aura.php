@@ -5,7 +5,7 @@
  * @package GW2Embeds/Shortcodes
  */
 
-GW2Emb_Shortcodes::add( 'skills' );
+GW2Emb_Shortcodes::add( 'aura' );
 
 /**
  * Called by WordPress, if shortcode is used
@@ -15,11 +15,10 @@ GW2Emb_Shortcodes::add( 'skills' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_skills_handler( $atts = array(), $content, $tag ) {
+function gw2emb_aura_handler( $atts = array(), $content, $tag ) {
 
 	$filter = array(
-		'id'        => '',
-		'text'      => '',
+		'name'      => '',
 		'notooltip' => '',
 		'notext'    => '',
 		'nolink'    => '',

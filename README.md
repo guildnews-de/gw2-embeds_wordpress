@@ -1,80 +1,100 @@
 # GW2 Embeddings (for Wordpress)
 
-
-This is a Wordpress-plugin to make it easier to use the [`GW2 armory embeds`](https://github.com/madou/armory-embeds).
-It adds the shortcodes `[gw2emb_amulets] [gw2emb_items] [gw2emb_skills] [gw2emb_specs] [gw2emb_traits]` to wordpress.
-You have to fill in the attributes very similar to the original. See [`Armory-embeds-Storybook`](https://madou.github.io/armory-embeds) for detailed information.
-
+This is a WordPress extention impementrs some Shortcodes, to display GuildWars 2 ui-elements in articles.
+It's based on [`discretize-ui`](https://github.com/discretize/discretize-ui).
 
 # Cheatsheet
 
-You have to add the needed options similar to the original GW2 Armory Embeddings.
-Supported parameters are:
+## Aura, Boon, Condition, Control
 
-main attributes | value 
-------------    |------------  
-id              |  ID(s) to be viewed (e.g. skill-IDs)  
-text            |  wiki (or gw2spidy)  
-blank           |  any text 
-size            |  number (for custom icon size in px) 
-style           |  inline (mods the embed to be viewed inline with text)  
+| attributes | value                       |
+| ---------- | --------------------------- |
+| name       | english effect-name         |
+| notooltip  | deactivate Tooltip          |
+| notext     | deactivate description text |
+| nolink     | deactivate wiki-link        |
+| noicon     | deactivate Icon             |
+| size       | 'large' for a larger Icon   |
+| inline     | use inline modifications    |
+| style      | custom css properties       |
 
-spec attributes |  value 
-------------    |------------  
-traits          |  trait IDs (read multi-view instructions) 
+## Icon
 
-item attributes | value    
-------------    |------------     
-skin            |  skin ID   
-stat            |  stat ID   
-upgrades        |  upgrade IDs (for stacked runes add +count e.g. 24815+3) 
-infusions       |  infusion ID 
-count           |  for item-stacks (displays a number on the item-icon)
+| attributes | value                                      |
+| ---------- | ------------------------------------------ |
+| name       | icon name (ap, gems, karma, laurel, title) |
+| text       | override default description text          |
+| notooltip  | deactivate Tooltip                         |
+| notext     | deactivate description text                |
+| nolink     | deactivate wiki-link                       |
+| noicon     | deactivate Icon                            |
+| size       | 'large' for a larger Icon                  |
+| inline     | use inline modifications                   |
+| style      | custom css properties                      |
 
+## coins
 
+| attributes | value                     |
+| ---------- | ------------------------- |
+| value      | coin value as one number  |
+| size       | 'large' for a larger Icon |
+| inline     | use inline modifications  |
+| style      | custom css properties     |
 
-# Multi-view
+## items
 
-To view multiple trait lines at once or multiple items with different upgrades you have to use a special syntax.
-You can fill in the ids just as usual. But the selected traits or item-attributes have to be in the same string, separated with an semicolon ';'. In the same order as the ids.
+| attributes | value                                                                          |
+| ---------- | ------------------------------------------------------------------------------ |
+| id         | item api-id(s) (semicolon separated)                                           |
+| count      | number of stacked items                                                        |
+| stats      | stats api id                                                                   |
+| upgrades   | upgrade api id(s) (comma separeted. for stacked runes add +count e.g. 24815+3) |
+| count      | for item-stacks (displays a number on the item-icon)                           |
+| notooltip  | deactivate Tooltip                                                             |
+| notext     | deactivate description text                                                    |
+| nolink     | deactivate wiki-link                                                           |
+| noicon     | deactivate Icon                                                                |
+| size       | 'large' for a larger Icon                                                      |
+| inline     | use inline modifications                                                       |
+| style      | custom css properties                                                          |
 
-## Examples:
+### Multi-view
 
-### Specalizations
+To view multiple items with different upgrades in one shortcode you have to use a special syntax.
+Just like the item-ids are semicolon separated, the item-attributes have to be in the same string, separated with an semicolon ';'. In the same order as the ids.
 
-Two trait-lines with chosen traits:
-```
-Shortcode:
-[gw2emb_specs  id=56,55  traits=2177,2061,2090; 2071,2085,2143 ]
+## profession
 
-Same shortcode with wrapped lines (to clarify the structure):
-                        (Traitline 1)    (Traitline 2)
-[gw2emb_specs     id  = 56             , 55
-              traits  = 2177,2061,2090 ; 2071,2085,2143 ]
-```
+| attributes | value                       |
+| ---------- | --------------------------- |
+| name       | english profession-name     |
+| notooltip  | deactivate Tooltip          |
+| notext     | deactivate description text |
+| nolink     | deactivate wiki-link        |
+| noicon     | deactivate Icon             |
+| size       | 'large' for a larger Icon   |
+| inline     | use inline modifications    |
+| style      | custom css properties       |
 
-### Items
-An item-stack of 10, with description text and inline with surrounding text
-```
-Shortcode:
-[gw2emb_items id=9333 text=wiki style=inline count=10]
+## skills, specialisation, trait
 
-Same shortcode with wrapped lines (to clarify the structure):
+| attributes | value                       |
+| ---------- | --------------------------- |
+| id         | api-id                      |
+| notooltip  | deactivate Tooltip          |
+| notext     | deactivate description text |
+| nolink     | deactivate wiki-link        |
+| noicon     | deactivate Icon             |
+| size       | 'large' for a larger Icon   |
+| inline     | use inline modifications    |
+| style      | custom css properties       |
 
-[gw2emb_items id    = 9333 
-              text  = wiki 
-              style = inline 
-              count = 10    ]
-```
+## traitline
 
-Three different equipment-items in one shortcode. First two with upgrades. The third with an infusion. (First two without infu):
-```
-Shortcode:
-[gw2emb_items  id=1379,1378,1377  upgrades=24615;24615,24815+4  infusions=0; 0; 49426,49426 ]
-
-Same shortcode with wrapped lines (to clarify the structure):
-                        (Item 1)  (Item 2)        (Item 3)
-[gw2emb_items     id  = 1379    , 1378          , 1377
-            upgrades  = 24615   ; 24615,24815+4
-           infusions  = 0       ; 0             ; 49426,49426 ]
-```
+| attributes | value                             |
+| ---------- | --------------------------------- |
+| id         | api-id                            |
+| select     | ids of selected traits            |
+| edit       | 'true' to make selection editable |
+| inline     | use inline modifications          |
+| style      | custom css properties             |
