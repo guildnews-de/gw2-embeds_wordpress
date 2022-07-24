@@ -1,9 +1,0 @@
-.largeIcon > span:first-child {
-    width: 3em;
-    height: 3em;
-}
-
-/* Very dirty, in need for a better solution. Maybe contribute to discretize-ui */
-.Spinner-module_inline__Aancd, .Icon-module_inline__XXSzF, .Progress-module_inline__PN5rq, .IconWithText-module_root__6Xhy6 > span:nth-child(2) {
-    vertical-align: middle !important;
-}
