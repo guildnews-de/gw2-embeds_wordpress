@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       GW2 Embeds
  * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later

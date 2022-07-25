@@ -19,7 +19,7 @@ function gw2emb_traitline_handler( $atts = array(), $content, $tag ) {
 
 	$filter = array(
 		'id'     => '',
-		'select' => '',
+		'traits' => '',
 		'edit'   => '',
 		'class'  => '',
 		'style'  => '',
