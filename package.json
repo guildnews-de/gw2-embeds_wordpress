@@ -4,5 +4,12 @@
   "private": true,
   "dependencies": {
     "gw2-embeds": "0.3.1"
+  },
+  "scripts": {
+    "build": "node packZip"
+  },
+  "devDependencies": {
+    "dir-archiver": "^2.1.0",
+    "rimraf": "^4.1.2"
   }
 }
