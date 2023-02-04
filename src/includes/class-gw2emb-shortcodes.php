@@ -56,7 +56,7 @@ class GW2Emb_Shortcodes {
 	 * @return void
 	 */
 	public static function check_scripts() {
-		wp_enqueue_script( 'gw2-embeds.js', GW2Embeds::$url . 'public/gw2-embeds/gw2-embeds.js', null, '0.3.2', true );
+		wp_enqueue_script( 'gw2-embeds.js', GW2Embeds::$url . 'public/gw2-embeds/gw2-embeds.js', null, '0.3.1', true );
 
 	}
 }
