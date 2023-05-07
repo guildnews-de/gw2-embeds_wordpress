@@ -1,6 +1,6 @@
 {
   "name": "gw2-embeds_wordpress",
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@3.5.1",
   "private": true,
   "dependencies": {
     "gw2-embeds": "0.3.1"
