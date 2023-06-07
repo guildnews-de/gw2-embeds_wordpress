@@ -87,4 +87,9 @@
 		</properties>
 	</rule>
 
+	<rule ref="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid">
+    <type>warning</type>
+	</rule>
+
+
 </ruleset>

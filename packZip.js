@@ -5,6 +5,7 @@ const dArch = require("dir-archiver");
 const path = require("path");
 
 const gw2Embeds = path.dirname(require.resolve("gw2-embeds"));
+const gw2MapEmbeds = path.dirname(require.resolve("gw2-map-embeds"));
 const packStats = require("./composer.json");
 const dir = path.resolve("./dist");
 
@@ -30,6 +31,14 @@ fs.cpSync("./src", `${dir}/raw/`, { recursive: true }, (err) => {
 fs.cpSync(
   gw2Embeds,
   `${dir}/raw/public/gw2-embeds/`,
+  { recursive: true },
+  (err) => {
+    fsError(err);
+  }
+);
+fs.cpSync(
+  gw2MapEmbeds,
+  `${dir}/raw/public/gw2-map-embeds/`,
   { recursive: true },
   (err) => {
     fsError(err);

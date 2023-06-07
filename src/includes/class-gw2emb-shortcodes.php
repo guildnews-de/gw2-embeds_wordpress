@@ -20,6 +20,13 @@ class GW2Emb_Shortcodes {
 	 */
 	const DATASET = 'data-gw2-';
 
+		/**
+	 * HTML dataset prefix
+	 *
+	 * @var string
+	 */
+	const MAP_DATASET = 'data-gw2map-';
+
 	/**
 	 * Static buffer for shortcodes
 	 * Filled through add-Method during load of individual shortcode files.
@@ -57,6 +64,15 @@ class GW2Emb_Shortcodes {
 	 */
 	public static function check_scripts() {
 		wp_enqueue_script( 'gw2-embeds.js', GW2Embeds::$url . 'public/gw2-embeds/gw2-embeds.js', null, '0.3.1', true );
+	}
+
+	/**
+	 * Check if map embed scripts are added.
+	 *
+	 * @return void
+	 */
+	public static function check_map_scripts() {
+		wp_enqueue_script( 'gw2-map.embeds.js', GW2Embeds::$url . 'public/gw2-map-embeds/gw2-map-embeds.js', null, '1.1.0', true );
 
 	}
 }

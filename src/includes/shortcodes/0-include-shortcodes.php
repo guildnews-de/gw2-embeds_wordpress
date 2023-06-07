@@ -18,4 +18,6 @@ require_once GW2Embeds::$path . 'includes/shortcodes/function-skills.php';
 require_once GW2Embeds::$path . 'includes/shortcodes/function-spec.php';
 require_once GW2Embeds::$path . 'includes/shortcodes/function-traitline.php';
 require_once GW2Embeds::$path . 'includes/shortcodes/function-traits.php';
-// require_once GW2Embeds::$path . 'includes/shortcodes/function-traits.php';.
+
+require_once GW2Embeds::$path . 'includes/shortcodes/function-map-marker.php';
+require_once GW2Embeds::$path . 'includes/shortcodes/function-map-root.php';
