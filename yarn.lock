@@ -891,14 +891,14 @@ __metadata:
   dependencies:
     dir-archiver: ^2.1.0
     gw2-embeds: 0.4.0-alpha.2
-    gw2-map-embeds: ^1.2.1
+    gw2-map-embeds: ^1.2.2
     rimraf: ^4.1.2
   languageName: unknown
   linkType: soft
 
-"gw2-map-embeds@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "gw2-map-embeds@npm:1.2.1"
+"gw2-map-embeds@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "gw2-map-embeds@npm:1.2.2"
   dependencies:
     "@discretize/typeface-menomonia": ^0.1.3
     "@fortawesome/fontawesome-svg-core": ^6.3.0
@@ -918,7 +918,7 @@ __metadata:
     react-leaflet: ^4.2.1
     react-redux: ^8.0.5
     sass: ^1.59.3
-  checksum: 06fe0c06d692c3862794678181d791c22e0938c6905badbe6ab91e4c9052396fb68fad6a6a1f08d21b5790c7f1cd0605ebbc6ec703e956e66d31e948b80a0461
+  checksum: 8a7fd8ea1dbb18679deb2b459d6a639c3775659ba0f04cccda7d987c22e49e79e46cd8a1a102a8556653a76148184875fb9e118af36e36f33080182483c60c19
   languageName: node
   linkType: hard
 
