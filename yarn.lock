@@ -871,9 +871,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gw2-embeds@npm:0.4.0-alpha.2":
-  version: 0.4.0-alpha.2
-  resolution: "gw2-embeds@npm:0.4.0-alpha.2"
+"gw2-embeds@npm:0.4.0-alpha.3":
+  version: 0.4.0-alpha.3
+  resolution: "gw2-embeds@npm:0.4.0-alpha.3"
   dependencies:
     "@discretize/gw2-ui-new": ^0.1.2
     "@discretize/typeface-menomonia": ^0.1.3
@@ -881,7 +881,7 @@ __metadata:
     object-hash: ^3.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 83e53350bf0f65b5846376227d1e5a43b1cf5a15a86aa5ae3b8ec8c89bcf2d303791d1b2f5a08fdafc252f1ebcf437c5fbae4a14b475c205f67d4435c0fc7f63
+  checksum: 57083306ae5ad310d3dcb683b1ac27c98d6093387f6ac3c5e3a05a640dd12c4a5ecf289d5f4babe3927686e59cc11ef3635bf9664926a4c672c34c89b21e49a2
   languageName: node
   linkType: hard
 
@@ -890,15 +890,15 @@ __metadata:
   resolution: "gw2-embeds_wordpress@workspace:."
   dependencies:
     dir-archiver: ^2.1.0
-    gw2-embeds: 0.4.0-alpha.2
-    gw2-map-embeds: ^1.2.2
+    gw2-embeds: 0.4.0-alpha.3
+    gw2-map-embeds: ^1.3
     rimraf: ^4.1.2
   languageName: unknown
   linkType: soft
 
-"gw2-map-embeds@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "gw2-map-embeds@npm:1.2.2"
+"gw2-map-embeds@npm:^1.3":
+  version: 1.3.0
+  resolution: "gw2-map-embeds@npm:1.3.0"
   dependencies:
     "@discretize/typeface-menomonia": ^0.1.3
     "@fortawesome/fontawesome-svg-core": ^6.3.0
@@ -918,7 +918,7 @@ __metadata:
     react-leaflet: ^4.2.1
     react-redux: ^8.0.5
     sass: ^1.59.3
-  checksum: 8a7fd8ea1dbb18679deb2b459d6a639c3775659ba0f04cccda7d987c22e49e79e46cd8a1a102a8556653a76148184875fb9e118af36e36f33080182483c60c19
+  checksum: 6d9686589448f1d23581765cb7d242c6caa763319e18b76c698b2932cb51b793f011d19728e3b7370f39f621ec1f9feace4a7e88c441d2029741ba49740ca14f
   languageName: node
   linkType: hard
 
