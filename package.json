@@ -1,6 +1,6 @@
 {
   "name": "gw2-embeds_wordpress",
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "yarn@4.3.1",
   "private": true,
   "dependencies": {
     "gw2-embeds": "0.4.0-alpha.3",
@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "dir-archiver": "^2.1.0",
-    "rimraf": "^4.4.1"
+    "rimraf": "^5.0.8"
   }
 }
