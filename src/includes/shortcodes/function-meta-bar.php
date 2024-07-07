@@ -5,7 +5,7 @@
  * @package GW2Embeds/Shortcodes
  */
 
-GW2Emb_Shortcodes::add( 'spec' );
+GW2Emb_Shortcodes::add( 'metaBar' );
 
 /**
  * Called by WordPress, if shortcode is used
@@ -15,18 +15,11 @@ GW2Emb_Shortcodes::add( 'spec' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_spec_handler( $atts = array(), $content, $tag = 'error' ) {
+function gw2emb_mapLoader_handler( $atts = array(), $content, $tag = 'error' ) {
 
 	$filter = array(
-		'id'     => '',
-		'text'   => '',
-		'notext' => '',
-		'nolink' => '',
-		'noicon' => '',
-		'class'  => '',
-		'size'   => '',
-		'inline' => '',
-		'style'  => '',
+		'ids'   => '',
+		'timer' => '',
 
 	);
 

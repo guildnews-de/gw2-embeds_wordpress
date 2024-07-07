@@ -15,7 +15,7 @@ GW2Emb_Shortcodes::add( 'control' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_control_handler( $atts = array(), $content, $tag ) {
+function gw2emb_control_handler( $atts = array(), $content, $tag = 'error' ) {
 
 	$filter = array(
 		'name'      => '',

@@ -15,7 +15,7 @@ GW2Emb_Shortcodes::add( 'aura' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_aura_handler( $atts = array(), $content, $tag ) {
+function gw2emb_aura_handler( $atts = array(), $content, $tag = 'error' ) {
 
 	$filter = array(
 		'name'      => '',

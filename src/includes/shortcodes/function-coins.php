@@ -15,7 +15,7 @@ GW2Emb_Shortcodes::add( 'coins' );
  * @param  string $tag .
  * @return string
  */
-function gw2emb_coins_handler( $atts = array(), $content, $tag ) {
+function gw2emb_coins_handler( $atts = array(), $content, $tag = 'error' ) {
 
 	$filter = array(
 		'value'  => '',

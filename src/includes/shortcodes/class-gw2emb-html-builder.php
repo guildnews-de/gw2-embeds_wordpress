@@ -70,6 +70,7 @@ class GW2Emb_HTML_Builder {
 		// prepare empty html-element.
 		$this->dom  = new DOMDocument();
 		$this->span = $this->dom->createElement( 'span' );
+		$this->span->setAttribute( 'class', 'gw2MultiEmb' );
 
 		// process input attributes.
 		$this->parse_attributes( $atts );

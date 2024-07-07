@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       GW2 Embeds
- * Description:       Implements a shortcode for simplyfied use of the GW2 Armory embeddings
- * Version:           1.3.8
+ * Description:       Adds shortcodes to show various GW2 info in WordPress
+ * Version:           2.0.beta17
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later
