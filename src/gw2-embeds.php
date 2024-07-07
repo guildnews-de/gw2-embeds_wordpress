@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       GW2 Embeds
  * Description:       Adds shortcodes to show various GW2 info in WordPress
- * Version:           2.0.beta17
+ * Version:           2.0.beta21
  * Author:            guildnews.de
  * Author URI:        https://guildnews.de
  * License:           BSD-3 or later

@@ -20,6 +20,7 @@ function gw2emb_icon_handler( $atts = array(), $content, $tag = 'error' ) {
 	$filter = array(
 		'name'      => '',
 		'text'      => '',
+		'count'     => '',
 		'notooltip' => '',
 		'notext'    => '',
 		'nolink'    => '',
